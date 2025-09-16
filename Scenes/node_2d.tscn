@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcxtvtu2up0aw"]
+
+[ext_resource type="PackedScene" uid="uid://dnle5o0k2a3q" path="res://Scenes/player_character_body_2d.tscn" id="1_qytgq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 45)
+position_smoothing_enabled = true
+
+[node name="PlayerCharacterBody2D" parent="." instance=ExtResource("1_qytgq")]
