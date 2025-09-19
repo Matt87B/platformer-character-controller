@@ -1,12 +1,10 @@
 #This node is inherited by all player states.
-#Constants aren't necessary, but make typos for state changes less likely.
 class_name PlayerState extends State
-#Player states
+#Player states for reference
 const IDLE = "Idle"
 const RUNNING = "Running"
 const JUMPING = "Jumping"
 const SWIMMING = "Swimming"
-const SUBMERGED = "Submerged"
 const FALLING = "Falling"
 
 var player: Player

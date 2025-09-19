@@ -9,8 +9,8 @@ func physics_update(delta: float) -> void:
 	player.move_and_slide()
 	
 	if !player.is_on_floor():
-		finished.emit(FALLING)
+		transition_requested.emit("fall")
 	elif Input.is_action_just_pressed("jump"):
-		finished.emit(JUMPING)
+		transition_requested.emit("jump")
 	elif Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
-		finished.emit(RUNNING)
+		transition_requested.emit("run")

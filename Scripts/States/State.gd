@@ -2,10 +2,10 @@
 #Do not make any changes to this script.
 class_name State extends Node
 
-signal finished(next_state_path: String)
+signal transition_requested(action: String)
 
 func _ready() -> void:
-	pass 
+	pass
 
 func handle_input(_event: InputEvent) -> void:
 	pass
