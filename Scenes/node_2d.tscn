@@ -1,26 +1,3 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcxtvtu2up0aw"]
-
-[ext_resource type="PackedScene" uid="uid://dnle5o0k2a3q" path="res://Scenes/player_character_body_2d.tscn" id="1_qytgq"]
-[ext_resource type="Script" path="res://Scripts/PlayerScripts/StateMachine.gd" id="2_ni7fs"]
+[gd_scene format=3 uid="uid://bcxtvtu2up0aw"]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(80, 45)
-position_smoothing_enabled = true
-
-[node name="PlayerCharacterBody2D" parent="." instance=ExtResource("1_qytgq")]
-
-[node name="PlayerStateMachine" type="Node2D" parent="PlayerCharacterBody2D"]
-script = ExtResource("2_ni7fs")
-
-[node name="MovementFSM" type="Node2D" parent="PlayerCharacterBody2D/PlayerStateMachine"]
-script = ExtResource("2_ni7fs")
-
-[node name="Running" type="Node2D" parent="PlayerCharacterBody2D/PlayerStateMachine/MovementFSM"]
-
-[node name="Jumping" type="Node2D" parent="PlayerCharacterBody2D/PlayerStateMachine/MovementFSM"]
-
-[node name="Falling" type="Node2D" parent="PlayerCharacterBody2D/PlayerStateMachine/MovementFSM"]
-
-[node name="Idle" type="Node2D" parent="PlayerCharacterBody2D/PlayerStateMachine/MovementFSM"]

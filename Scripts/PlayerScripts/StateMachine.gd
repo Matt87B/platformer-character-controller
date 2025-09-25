@@ -1,72 +1,82 @@
-class_name StateMachine extends State
+class_name StateMachine extends Node2D
 
-@export var initial_state : State = null
-var states: Dictionary = {}
-var transition_map: Dictionary = {
-	"Idle": {
-		"move" : "Running",
-		"jump" : "Jumping"
-	},
-	"Running": {
-		"stop" : "Idle",
-		"jump" : "Jumping",
-		"fall" : "Falling"
-	},
-	"Falling": {
-		"stop" : "Idle",
-		"move" : "Running"
-	},
-	"Jumping": {
-		"stop" : "Idle",
-		"fall" : "Falling",
-		"run" : "Running"
-	}
-}
+var _current: StateMachine
+var _default: StateMachine
+var _parent: StateMachine
 
-#Check if initial_state has been selected, otherwise default to first child of this node
-@onready var current_state: State = (func get_initial_state() -> State:
-	return initial_state if initial_state != null else get_child(0)
-).call()
+var _sub_states: Dictionary
+var _transitions: Dictionary
 
-func _ready() -> void:
-	for child in get_children():
-		if child is State:
-			transition_map[child.name] = child
+func enter_state_machine() -> void:
+	_on_enter()
+	if (_current == null):
+		_current = _default
+	_current.enter_state_machine()
 
-func handle_input(event: InputEvent) -> void:
-	#Handles user input
-	if current_state:
-		current_state.handle_input(event)
+func update_state_machine(delta: float) -> void:
+	_on_update(delta)
+	_on_exit()
 
-func update(delta: float) -> void:
-	#Update non-physics related (Animations, etc.)
-	if current_state:
-		current_state.update(delta)
+func exit_state_machine() -> void:
+	_current.exit_state_machine()
+	_on_exit()
 
-func physics_update(delta: float) -> void:
-	#Update physics related things (Movement, gravity, etc.)
-	if current_state:
-		current_state.physics_update(delta)
+func _on_enter() -> void: pass
 
-func set_state(new_state: State):
-	if current_state:
-		current_state.exit()
-		current_state.transition_requested.disconnect(_on_event)
-	current_state = new_state
-	if current_state:
-		current_state.transition_requested.connect(_on_event)
+func _on_exit() -> void: pass
+
+func _on_update(delta: float) -> void: pass
+
+func load_sub_state(sub_state: StateMachine) -> void:
+	if (_sub_states.is_empty()):
+		_default = sub_state
 	
-	if current_state is StateMachine:
-		if current_state.initial_state:
-			current_state.set_state(current_state.get_node(current_state.initial_state))
+	_parent = self
+	
+	if _sub_states.has(sub_state.get_class()):
+		push_error("State %s already contains a substate of type %s" % [get_class(), sub_state.get_class()])
+		return
+	
+	_sub_states[sub_state.get_class()] = sub_state
+
+func add_transition(from: StateMachine, to: StateMachine, trigger: int) -> void:
+	if not _sub_states.has(from.get_class()):
+		push_error("State %s does not have a substate of type %s to transition from." %[self, from.get_class()])
+		return
+	
+	if not _sub_states.has(to.get_class()):
+		push_error("State %s does not have a substate of type %s to transition from." % [get_class(), to.get_class()])
+		return
+	
+	if from._transitions.has(trigger):
+		push_error("State %s already has a transition defined for trigger %s" % [str(from), str(trigger)])
+		return
+	
+	from._transitions[trigger] = to
+
+func send_trigger(trigger: int) -> void:
+	var root : StateMachine = self
+	
+	while root != null and root.parent != null:
+		root = root._parent
+	
+	while root != null:
+		if root._transitions.has(trigger):
+			var to_state: StateMachine = root._transitions[trigger]
+			if root._parent != null:
+				root.parent.change_sub_state(to_state)
+			return
 		
-func _on_event(event: String):
-	var state_name = current_state.name
-	if state_name in transition_map:
-		if event in transition_map[state_name]:
-			#Change state to next state according to dictionary of states and events
-			set_state(get_node(transition_map[state_name][event]))
-		else:
-			#Bubble up signal to change states
-			if owner is StateMachine:
-				owner._on_event(event)
+		root = root._current
+	
+	push_error("Trigger %s was not consumed by any transition." % str(trigger))
+
+func change_sub_state(state: StateMachine):
+	if _current != null:
+		_current.exit_state_machine()
+		var new_state : StateMachine = _sub_states[state.get_class()]
+		_current = new_state
+		new_state.enter_state_machine()
+		return
+	
+	push_error("Cannot change sub state from null state.")
