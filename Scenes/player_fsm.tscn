@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkeuyqpnv05fw"]
+
+[ext_resource type="Script" path="res://scripts/player_scripts/StateMachine.gd" id="1_bw5pu"]
+[ext_resource type="Script" path="res://scripts/state_machines/OnGroundState.gd" id="2_p31jc"]
+[ext_resource type="Script" path="res://scripts/states/IdleState.gd" id="3_lgths"]
+[ext_resource type="Script" path="res://scripts/states/RunState.gd" id="4_fsr2x"]
+[ext_resource type="Script" path="res://scripts/states/JumpState.gd" id="5_cbodr"]
+[ext_resource type="Script" path="res://scripts/states/FallState.gd" id="6_jdc04"]
+
+[node name="PlayerFSM" type="Node2D" node_paths=PackedStringArray("_default")]
+script = ExtResource("1_bw5pu")
+_default = NodePath("OnGroundState")
+
+[node name="AirborneState" type="Node2D" parent="."]
+
+[node name="OnGroundState" type="Node2D" parent="."]
+script = ExtResource("2_p31jc")
+
+[node name="IdleState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("3_lgths")
+
+[node name="RunState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("4_fsr2x")
+
+[node name="JumpState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("5_cbodr")
+
+[node name="FallState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("6_jdc04")

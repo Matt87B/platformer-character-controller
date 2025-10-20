@@ -1,8 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnle5o0k2a3q"]
+[gd_scene load_steps=5 format=3 uid="uid://dnle5o0k2a3q"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerScripts/Player.gd" id="1_yi1hc"]
+[ext_resource type="Script" path="res://scripts/player_scripts/Player.gd" id="1_yi1hc"]
+[ext_resource type="PackedScene" uid="uid://dkeuyqpnv05fw" path="res://scenes/player_fsm.tscn" id="2_i0ma7"]
+[ext_resource type="Texture2D" uid="uid://bqrknnlqay8kv" path="res://textures/player_textures/icon.svg" id="3_ya46d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yuor8"]
+radius = 6.0
+height = 16.0
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_yi1hc")
@@ -10,3 +14,10 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yuor8")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(0.09375, 0.125)
+texture = ExtResource("3_ya46d")
+
+[node name="PlayerFSM" parent="." instance=ExtResource("2_i0ma7")]
