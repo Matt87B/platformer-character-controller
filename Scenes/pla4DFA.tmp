@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://dnle5o0k2a3q"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Player.gd" id="1_yi1hc"]
+[ext_resource type="Texture2D" uid="uid://bqrknnlqay8kv" path="res://Textures/PlayerTextures/icon.svg" id="2_crq7r"]
+[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_ej85t"]
+[ext_resource type="Script" path="res://Scripts/PlayerStates/Running.gd" id="4_vwa22"]
+[ext_resource type="Script" path="res://Scripts/PlayerStates/Jumping.gd" id="5_u6s30"]
+[ext_resource type="Script" path="res://Scripts/PlayerStates/Falling.gd" id="6_assjq"]
+[ext_resource type="Script" path="res://Scripts/PlayerStates/Idle.gd" id="7_3x5u8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yuor8"]
+radius = 9.0
+
+[node name="PlayerCharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_yi1hc")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_yuor8")
+
+[node name="PlayerSprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.57628e-07, -4.76837e-07)
+scale = Vector2(0.15625, 0.234375)
+texture = ExtResource("2_crq7r")
+
+[node name="PlayerStateMachine" type="Node2D" parent="."]
+script = ExtResource("3_ej85t")
+
+[node name="MovementFSM" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("3_ej85t")
+
+[node name="Running" type="Node2D" parent="PlayerStateMachine/MovementFSM"]
+script = ExtResource("4_vwa22")
+
+[node name="Jumping" type="Node2D" parent="PlayerStateMachine/MovementFSM"]
+script = ExtResource("5_u6s30")
+
+[node name="Falling" type="Node2D" parent="PlayerStateMachine/MovementFSM"]
+script = ExtResource("6_assjq")
+
+[node name="Idle" type="Node2D" parent="PlayerStateMachine/MovementFSM"]
+script = ExtResource("7_3x5u8")
