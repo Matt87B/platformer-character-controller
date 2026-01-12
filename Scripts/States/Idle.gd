@@ -6,5 +6,5 @@ func _on_enter() -> void:
 func _on_exit() -> void:
 	print("Exited Idle")
 
-func _on_update() -> void:
+func _on_update(delta: float) -> void:
 	print("Updated Idle")
