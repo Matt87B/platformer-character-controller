@@ -13,9 +13,9 @@ func _on_update(delta: float) -> void:
 	player.velocity.x = player.speed * input_dir
 
 	if player.is_on_floor():
-		if Input.is_action_just_pressed("jump"):
-			send_trigger(player.JUMP)
-		elif is_equal_approx(input_dir, 0.0):
+		if is_equal_approx(input_dir, 0.0):
 			send_trigger(player.IDLE)
 		else:
 			send_trigger(player.RUN)
+	elif player.is_on_wall_only() and input_dir != 0:
+		send_trigger(player.WALL)

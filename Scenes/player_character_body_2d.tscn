@@ -4,16 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://dkeuyqpnv05fw" path="res://scenes/player_fsm.tscn" id="2_i0ma7"]
 [ext_resource type="Texture2D" uid="uid://bqrknnlqay8kv" path="res://textures/player_textures/icon.svg" id="3_ya46d"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yuor8"]
-radius = 6.0
-height = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u371u"]
+size = Vector2(12, 12)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_yi1hc")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_yuor8")
+shape = SubResource("RectangleShape2D_u371u")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 scale = Vector2(0.09375, 0.09375)

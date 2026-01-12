@@ -15,6 +15,6 @@ func _on_update(_delta: float) -> void:
 	else:
 		if not is_equal_approx(input_dir, 0.0):
 			send_trigger(player.RUN)
-		elif player.jump_buffer_timer > 0 and player.coyote_timer > 0:
+		elif player.jump_buffer_timer > 0 and player.coyote_timer > 0 and player.jump_cooldown_timer == 0:
 			send_trigger(player.JUMP)
 	

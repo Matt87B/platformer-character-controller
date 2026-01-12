@@ -89,7 +89,6 @@ func send_trigger(trigger: int) -> void:
 			return
 		
 		root = root._current
-	
 	push_error("Trigger %s was not consumed by any transition." % str(trigger))
 ##Changes substate to a new state
 func _change_sub_state(state: StateMachine):

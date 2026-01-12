@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkeuyqpnv05fw"]
+[gd_scene load_steps=8 format=3 uid="uid://dkeuyqpnv05fw"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/StateMachine.gd" id="1_bw5pu"]
 [ext_resource type="Script" path="res://scripts/state_machines/OnGroundState.gd" id="2_p31jc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/states/RunState.gd" id="4_fsr2x"]
 [ext_resource type="Script" path="res://scripts/states/JumpState.gd" id="5_cbodr"]
 [ext_resource type="Script" path="res://scripts/states/FallState.gd" id="6_jdc04"]
+[ext_resource type="Script" path="res://scripts/states/WallSlideState.gd" id="7_txlh5"]
 
 [node name="PlayerFSM" type="Node2D" node_paths=PackedStringArray("_default")]
 script = ExtResource("1_bw5pu")
@@ -27,3 +28,6 @@ script = ExtResource("5_cbodr")
 
 [node name="FallState" type="Node2D" parent="OnGroundState"]
 script = ExtResource("6_jdc04")
+
+[node name="WallSlideState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("7_txlh5")
