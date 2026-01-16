@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dnle5o0k2a3q" path="res://scenes/player_character_body_2d.tscn" id="1_dbf5h"]
 [ext_resource type="Texture2D" uid="uid://bvblq0agysp33" path="res://textures/tile_maps/natural_tiles.png" id="3_58epm"]
 
-<<<<<<< HEAD:Scenes/node_2d.tscn
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_crgoy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cucth"]
@@ -36,8 +35,6 @@ texture_region_size = Vector2i(8, 8)
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
-=======
->>>>>>> 770bc7e220b9d76ccfd3900106e00f8097006ce3:scenes/node_2d.tscn
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0y7qw"]
 texture = ExtResource("3_58epm")
 texture_region_size = Vector2i(8, 8)
@@ -2231,11 +2228,7 @@ sources/1 = SubResource("TileSetAtlasSource_0y7qw")
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("1_dbf5h")]
-<<<<<<< HEAD:Scenes/node_2d.tscn
 position = Vector2(84, 28)
-=======
-position = Vector2(89, 12)
->>>>>>> 770bc7e220b9d76ccfd3900106e00f8097006ce3:scenes/node_2d.tscn
 collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacterBody2D"]
@@ -2247,8 +2240,5 @@ drag_horizontal_offset = 0.2
 drag_vertical_offset = 0.2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-<<<<<<< HEAD:Scenes/node_2d.tscn
 tile_map_data = PackedByteArray("AAAMAAUAAQAFAAMAAAANAAUAAQAJAAMAAAAOAAUAAQAFAAIAAAAPAAUAAQAGAAIAAAAPAAYAAQALAAIAAAAOAAYAAQAIAAEAAAAMAAcAAQAKAAAAAAANAAcAAQAKAAAAAAAOAAcAAQAFAAEAAAAPAAcAAQAGAAEAAAANAAgAAQAJAAMAAAAMAAgAAQAJAAMAAAAOAAgAAQAJAAMAAAAPAAgAAQAJAAMAAAAQAAgAAQAJAAMAAAARAAgAAQALAAMAAAARAAcAAQAJAAEAAAAQAAcAAQAKAAAAAAARAAYAAQAEAAEAAAASAAYAAQAKAAAAAAATAAcAAQALAAMAAAASAAcAAQAJAAMAAAAUAAYAAQALAAMAAAATAAYAAQAJAAEAAAATAAUAAQAIAAAAAAALAAgAAQAFAAMAAAAKAAgAAQACAAMAAAAJAAgAAQAGAAMAAAALAAcAAQAEAAEAAAALAAYAAQAHAAIAAAAKAAYAAQAJAAMAAAAJAAcAAQALAAIAAAAJAAYAAQAGAAIAAAAJAAUAAQAKAAAAAAAKAAUAAQAKAAAAAAALAAUAAQAGAAAAAAAMAAQAAQAIAAAAAAANAAQAAQAFAAEAAAANAAMAAQAIAAAAAAAOAAMAAQAKAAAAAAAPAAMAAQAKAAAAAAAQAAMAAQALAAAAAAAQAAQAAQAGAAEAAAAPAAQAAQAJAAIAAAAOAAQAAQAJAAIAAAAQAAUAAQAJAAMAAAARAAUAAQAHAAIAAAARAAQAAQALAAAAAAAUAAUAAQALAAAAAAAIAAUAAQAIAAAAAAAIAAYAAQAFAAEAAAAIAAcAAQAJAAIAAAAIAAgAAQAJAAMAAAAHAAgAAQAIAAMAAAAHAAcAAQAIAAEAAAAHAAYAAQAIAAAAAAASAAMAAQAIAAUAAAASAAQAAQAIAAcAAAATAAQAAQAJAAcAAAATAAMAAQAJAAYAAAAUAAMAAQAJAAYAAAAUAAQAAQAJAAcAAAAVAAQAAQALAAcAAAAVAAMAAQALAAYAAAAVAAIAAQALAAQAAAAUAAIAAQAKAAQAAAATAAIAAQAKAAQAAAASAAIAAQAIAAQAAAA=")
-=======
->>>>>>> 770bc7e220b9d76ccfd3900106e00f8097006ce3:scenes/node_2d.tscn
 tile_set = SubResource("TileSet_ggxc4")
