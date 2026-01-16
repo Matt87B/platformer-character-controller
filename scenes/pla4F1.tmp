@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://dnle5o0k2a3q"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerScripts/Player.gd" id="1_yi1hc"]
+[ext_resource type="Script" path="res://scripts/PlayerScripts/Player.gd" id="1_yi1hc"]
 [ext_resource type="Texture2D" uid="uid://bqrknnlqay8kv" path="res://Textures/PlayerTextures/icon.svg" id="2_crq7r"]
-[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_ej85t"]
-[ext_resource type="Script" path="res://Scripts/PlayerStates/Running.gd" id="4_vwa22"]
-[ext_resource type="Script" path="res://Scripts/PlayerStates/Jumping.gd" id="5_u6s30"]
-[ext_resource type="Script" path="res://Scripts/PlayerStates/Falling.gd" id="6_assjq"]
-[ext_resource type="Script" path="res://Scripts/PlayerStates/Idle.gd" id="7_3x5u8"]
+[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="3_ej85t"]
+[ext_resource type="Script" path="res://scripts/PlayerStates/Running.gd" id="4_vwa22"]
+[ext_resource type="Script" path="res://scripts/PlayerStates/Jumping.gd" id="5_u6s30"]
+[ext_resource type="Script" path="res://scripts/PlayerStates/Falling.gd" id="6_assjq"]
+[ext_resource type="Script" path="res://scripts/PlayerStates/Idle.gd" id="7_3x5u8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yuor8"]
 radius = 9.0
