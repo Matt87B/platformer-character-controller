@@ -18,5 +18,5 @@ func _on_update(delta: float) -> void:
 		send_trigger(player.IDLE)
 	elif Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y *= player.jump_cut_mult * delta
-	elif player.is_on_wall_only() and input_dir != 0:
+	elif player.is_on_wall_only() and input_dir != 0 and player.velocity.y > 0:
 		send_trigger(player.WALL)

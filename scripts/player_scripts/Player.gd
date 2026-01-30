@@ -4,10 +4,10 @@ class_name Player extends CharacterBody2D
 @export var swim_speed_dampening_factor := 0.25
 @export var jump_impulse := 250.0
 @export var min_jump_speed := 100.0
-@export var coyote_time := 0.1
+@export var coyote_time := 0.03
 @export var jump_buffer_time := 0.05
 @export var wall_slide_factor := 0.25
-@export var wall_pushback := 200
+@export var wall_pushback := 250
 @export var jump_cooldown := 0.2
 @export var jump_cut_mult := 0.90
 
@@ -68,7 +68,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#This handles Coyote time
-	if is_on_floor():
+	if is_on_floor() or is_on_wall():
 		coyote_timer = coyote_time
 	else:
 		coyote_timer = max(coyote_timer - delta, 0)

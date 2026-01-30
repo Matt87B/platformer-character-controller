@@ -19,6 +19,6 @@ func _on_update(delta: float) -> void:
 	if not (player.is_on_wall_only() and input_dir != 0):
 		send_trigger(player.FALL)
 	else:
-		if player.jump_buffer_timer > 0 and player.jump_cooldown_timer == 0:
+		if player.jump_buffer_timer > 0 and player.jump_cooldown_timer == 0 and player.coyote_timer > 0:
 			player.velocity.x = player.wall_pushback * -input_dir
 			send_trigger(player.JUMP)
