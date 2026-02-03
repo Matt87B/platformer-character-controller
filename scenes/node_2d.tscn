@@ -2855,6 +2855,107 @@ texture_region_size = Vector2i(8, 8)
 4:24/0 = 0
 4:23/0 = 0
 4:22/0 = 0
+5:21/0 = 0
+5:21/0/metadata/_better_terrain = {
+0: [6],
+3: [6],
+4: [6],
+"type": 6
+}
+6:21/0 = 0
+6:21/0/metadata/_better_terrain = {
+0: [6],
+3: [6],
+4: [6],
+7: [6],
+8: [6],
+"type": 6
+}
+7:21/0 = 0
+7:21/0/metadata/_better_terrain = {
+4: [6],
+7: [6],
+8: [6],
+"type": 6
+}
+8:21/0 = 0
+8:21/0/metadata/_better_terrain = {
+4: [6],
+"type": 6
+}
+8:22/0 = 0
+8:22/0/metadata/_better_terrain = {
+4: [6],
+12: [6],
+"type": 6
+}
+7:22/0 = 0
+7:22/0/metadata/_better_terrain = {
+4: [6],
+7: [6],
+8: [6],
+11: [6],
+12: [6],
+"type": 6
+}
+6:22/0 = 0
+5:22/0 = 0
+5:22/0/metadata/_better_terrain = {
+0: [6],
+3: [6],
+4: [6],
+12: [6],
+15: [6],
+"type": 6
+}
+5:23/0 = 0
+5:23/0/metadata/_better_terrain = {
+0: [6],
+12: [6],
+15: [6],
+"type": 6
+}
+6:23/0 = 0
+6:23/0/metadata/_better_terrain = {
+0: [6],
+8: [6],
+11: [6],
+12: [6],
+15: [6],
+"type": 6
+}
+7:23/0 = 0
+7:23/0/metadata/_better_terrain = {
+8: [6],
+11: [6],
+12: [6],
+"type": 6
+}
+8:23/0 = 0
+8:23/0/metadata/_better_terrain = {
+12: [6],
+"type": 6
+}
+8:24/0 = 0
+8:24/0/metadata/_better_terrain = {
+"type": 6
+}
+7:24/0 = 0
+7:24/0/metadata/_better_terrain = {
+8: [6],
+"type": 6
+}
+6:24/0 = 0
+6:24/0/metadata/_better_terrain = {
+0: [6],
+8: [6],
+"type": 6
+}
+5:24/0 = 0
+5:24/0/metadata/_better_terrain = {
+0: [6],
+"type": 6
+}
 
 [sub_resource type="TileSet" id="TileSet_ggxc4"]
 tile_size = Vector2i(8, 8)
