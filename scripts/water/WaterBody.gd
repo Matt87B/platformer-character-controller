@@ -3,20 +3,19 @@ extends Node2D
 var points: Array[WaterPoint] = []
 var bottom_points: Array = []
 var water_width := 0
-var path_length := 0.0
 
-@export var tile_count := 12
+@export var tile_count := 13
 @export var base_height := 0
-@export var tension := 0.015
+@export var tension := 0.2
 @export var non_linear_dampening := 0.015
-@export var dampening := 0.96
-@export var spread := 0.4
-@export var iterations := 8
-@export var impulse_factor := 0.045
+@export var dampening := 0.95
+@export var spread := 0.5
+@export var iterations := 16
+@export var impulse_factor := 0.05
 
 @onready var area := $Area2D
 @onready var polygon : CollisionPolygon2D = $Area2D/CollisionPolygon2D
-@onready var bottom_path := $Path2D
+@onready var bottom_path := $Line2D
 
 func _ready() -> void:
 	for j in range(tile_count * 8):
@@ -27,7 +26,6 @@ func _ready() -> void:
 		points.append(p)
 	
 	water_width = (points.size() - 1)
-	path_length = bottom_path.curve.get_baked_length()
 	
 	build_collision_from_path()
 
@@ -41,28 +39,20 @@ func build_collision_from_path():
 	polygon.polygon = poly
 
 func _draw():
-	var poly := PackedVector2Array()
+	var poly : Polygon2D = Polygon2D.new()
 	var heights := []
-	var curve = bottom_path.curve
+
+	poly.polygon = bottom_path.points
 
 	for i in range(points.size()):
 		var y = round(points[i].height)
 		heights.append(y)
-		poly.append(Vector2(i, y))
+		#poly.append(Vector2(i, y))
 
-	for i in range(curve.get_point_count() - 1, -1, -1):
-		var p = to_local(bottom_path.to_global(curve.get_point_position(i)))
-		poly.append(p)
-
-	draw_polygon(poly, [Color(0.2, 0.5, 1.0, 0.6)])
+	draw_polygon(poly.polygon, [Color(0.2, 0.5, 1.0, 0.6)])
 
 	for i in range(heights.size() - 1):
-		draw_pixel_line(
-			i,
-			heights[i],
-			i + 1,
-			heights[i + 1]
-		)
+		draw_pixel_line(i, heights[i], i + 1, heights[i + 1])
 
 func draw_pixel_line(x1, y1, x2, y2):
 	var dx = x2 - x1
@@ -82,10 +72,10 @@ func _process(_delta: float) -> void:
 		p.velocity *= dampening
 		p.velocity *= 1.0 - abs(p.velocity) * non_linear_dampening
 		p.height += p.velocity
-		var bottom_y = p.rest_height + 8  # you can make water_depth vary per point
-		if p.height > bottom_y:
-			p.height = bottom_y
-			p.velocity = 0
+		#var bottom_y = p.rest_height + 8
+		#if p.height > bottom_y:
+			#p.height = bottom_y
+			#p.velocity = 0
 	
 	var iter_spread = spread/iterations
 	for i in range(iterations):

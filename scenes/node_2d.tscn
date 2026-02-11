@@ -2866,10 +2866,6 @@ metadata/_better_terrain = {
 }
 
 [sub_resource type="Curve2D" id="Curve2D_14ei0"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 24, 23, 0, 0, 0, 0, 48, 23, 0, 0, 0, 0, 48, 31, 0, 0, 0, 0, 64, 31, 0, 0, 0, 0, 64, 39, 0, 0, 0, 0, 104, 39, 0, 0, 0, 0, 104, 31, 0, 0, 0, 0, 120, 31, 0, 0, 0, 0, 120, 23, 0, 0, 0, 0, 128, 23)
-}
-point_count = 10
 
 [node name="Node2D" type="Node2D"]
 
@@ -2901,5 +2897,9 @@ metadata/_edit_group_ = true
 [node name="Path2D" type="Path2D" parent="WaterBody"]
 position = Vector2(-24, -15)
 curve = SubResource("Curve2D_14ei0")
+
+[node name="Line2D" type="Line2D" parent="WaterBody"]
+points = PackedVector2Array(0, 8, 24, 8, 24, 16, 40, 16, 40, 24, 80, 24, 80, 16, 96, 16, 96, 8, 104, 8)
+width = 1.0
 
 [connection signal="body_entered" from="WaterBody/Area2D" to="WaterBody" method="_on_area_2d_body_entered"]
