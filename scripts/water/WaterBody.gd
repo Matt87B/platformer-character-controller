@@ -5,7 +5,7 @@ var bottom_points: Array = []
 var water_width := 0
 var path_length := 0.0
 
-@export var tile_count := 12
+@export var tile_count := 13
 @export var base_height := 0
 @export var tension := 0.015
 @export var non_linear_dampening := 0.015
@@ -26,7 +26,7 @@ func _ready() -> void:
 		p.velocity = 0.0
 		points.append(p)
 	
-	water_width = (points.size() - 1)
+	water_width = points.size()
 	path_length = bottom_path.curve.get_baked_length()
 	
 	build_collision_from_path()
@@ -34,8 +34,8 @@ func _ready() -> void:
 func build_collision_from_path():
 	var poly = PackedVector2Array()
 	poly.append(Vector2(0, base_height))
-	poly.append(Vector2(water_width + 1, base_height))
-	poly.append(Vector2(water_width + 1, 5 + base_height))
+	poly.append(Vector2(points.size(), base_height))
+	poly.append(Vector2(points.size(), 5 + base_height))
 	poly.append(Vector2(0, 5 + base_height))
 
 	polygon.polygon = poly
@@ -49,13 +49,12 @@ func _draw():
 		var y = round(points[i].height)
 		heights.append(y)
 		poly.append(Vector2(i, y))
-
+	
 	for i in range(curve.get_point_count() - 1, -1, -1):
 		var p = to_local(bottom_path.to_global(curve.get_point_position(i)))
 		poly.append(p)
-
 	draw_polygon(poly, [Color(0.2, 0.5, 1.0, 0.6)])
-
+	
 	for i in range(heights.size() - 1):
 		draw_pixel_line(
 			i,

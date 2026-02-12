@@ -2890,7 +2890,7 @@ tile_map_data = PackedByteArray("AAAMAAkAAQANAA0AAAAKAAkAAQABAA4AAAAKAAoAAQABAA0
 tile_set = SubResource("TileSet_ggxc4")
 
 [node name="WaterBody" type="Node2D" parent="."]
-position = Vector2(80, 56)
+position = Vector2(80, 45)
 script = ExtResource("3_6rwrp")
 metadata/_edit_group_ = true
 
