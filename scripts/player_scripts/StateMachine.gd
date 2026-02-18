@@ -1,9 +1,9 @@
 class_name StateMachine extends Node2D
 
-##The current state of the player
+##The current state
 var _current: StateMachine
-##The starting state of the player
-@export var _default: StateMachine
+##The starting state
+var _default: StateMachine
 ##The parent state machine
 var _parent: StateMachine
 ##This dictionary contains information about the substates of this state machine
@@ -15,34 +15,35 @@ var player : Player
 
 ##This function enters the current state
 func enter_state_machine(p: Player) -> void:
+	print("Entered %s" %self)
 	self.player = p
 	_on_enter()
 	if (_current == null and _default != null):
 		_current = _default
 	if (_current != null):
 		_current.enter_state_machine(player)
-
 ##This function updates the current state
 func update_state_machine(delta: float) -> void:
 	if _current != null:
 		_current.update_state_machine(delta)
 	_on_update(delta)
-
 ##This function exits the current state
 func exit_state_machine() -> void:
+	print("Exited %s" %self)
 	if _current != null:
 		_current.exit_state_machine()
+		_current = null
 	_on_exit()
 ##This function is called when this state machine is entered.
-##Override it and add the necessary code your state.
+##Override it and add the necessary code to your state.
 func _on_enter() -> void: pass
 
 ##This function is called when this state machine is exited.
-##Override it and add the necessary code your state.
+##Override it and add the necessary code to your state.
 func _on_exit() -> void: pass
 
 ##This function is called when this state machine is updated.
-##Override it and add the necessary code your state.
+##Override it and add the necessary code to your state.
 func _on_update(_delta: float) -> void: pass
 
 func load_sub_state(sub_state: StateMachine) -> void:
@@ -59,7 +60,7 @@ func load_sub_state(sub_state: StateMachine) -> void:
 ##Returns the class_name of this state machine
 func get_state_type() -> String:
 	return get_script().get_global_name()
-##Adds a transition 
+##Adds a transition
 func add_transition(from: StateMachine, to: StateMachine, trigger: int) -> void:
 	if not _sub_states.has(from.get_state_type()):
 		push_error("State %s does not have a substate of type %s to transition from." %[get_state_type(), from.get_state_type()])
@@ -77,26 +78,29 @@ func add_transition(from: StateMachine, to: StateMachine, trigger: int) -> void:
 ##Sends a trigger up the node tree, telling parent nodes to change the state
 func send_trigger(trigger: int) -> void:
 	var root : StateMachine = self
-	
-	while root != null and root._parent != null:
-		root = root._parent
-	
+
 	while root != null:
 		if root._transitions.has(trigger):
-			var to_state: StateMachine = root._transitions[trigger]
-			if root._parent != null:
-				root._parent._change_sub_state(to_state)
+			var owner_machine = root._parent
+			if owner_machine == null:
+				push_error("State has transition but no parent machine.")
+				return
+			owner_machine._change_sub_state(root._transitions[trigger])
 			return
-		
-		root = root._current
+
+		root = root._parent
+
 	push_error("Trigger %s was not consumed by any transition." % str(trigger))
 ##Changes substate to a new state
 func _change_sub_state(state: StateMachine):
 	if _current != null:
 		_current.exit_state_machine()
-		var new_state : StateMachine = _sub_states[state.get_state_type()]
-		_current = new_state
-		new_state.enter_state_machine(player)
+	
+	var new_state : StateMachine = _sub_states[state.get_state_type()]
+	
+	if new_state == null:
+		push_error("State %s does not contain substate %s" % [get_state_type(), state.get_state_type()])
 		return
 	
-	push_error("Cannot change sub state from null state.")
+	_current = new_state
+	_current.enter_state_machine(player)

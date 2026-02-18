@@ -1,18 +1,22 @@
 extends Node2D
 
 var points: Array[WaterPoint] = []
-var bodies_in_water := []
+var bodies_in_water : Array= []
 var water_width := 0
 
 @export var tile_count := 13
 @export var base_height := 1
-@export var tension := 0.1
+@export var tension := 3
 @export var non_linear_dampening := 0.015
-@export var dampening := 0.97
+@export var dampening := 0.93
 @export var spread := 0.5
-@export var iterations := 16
-@export var impulse_factor := 0.04
+@export var iterations := 8
+@export var impulse_factor := 0.3
 
+@export var test_body_half_width := 2.0
+@export var depth_decay := 0.08
+@export var buoyancy_strength := 0.04
+@export var drag_strength := 0.02
 
 @onready var collision_poly : CollisionPolygon2D = $Area2D/CollisionPolygon2D
 @onready var bottom_path := $Line2D
@@ -31,8 +35,8 @@ func _ready() -> void:
 	collision_poly.polygon = PackedVector2Array ([
 		Vector2(0, base_height),
 		Vector2(water_width, base_height),
-		Vector2(water_width, base_height + 8),
-		Vector2(0, base_height + 8)
+		Vector2(water_width, base_height + 32),
+		Vector2(0, base_height + 32)
 		])
 
 #Draws the water's surface and body
@@ -89,29 +93,23 @@ func draw_pixel_line(x1, y1, x2, y2):
 		draw_rect(Rect2(px, py, 1, 1), Color(0.2, 0.5, 1.0))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta):
 	for p in points:
 		var force = tension * (p.rest_height - p.height)
-		p.velocity += force
+		p.velocity += force * delta
 		p.velocity *= dampening
-		p.velocity *= 1.0 - abs(p.velocity) * non_linear_dampening
 		p.height += p.velocity
-		#Prevent overshoot down the way
-		var bottom_y = get_bottom_y_at_x(points.find(p))
-		if p.height > bottom_y:
-			p.height = bottom_y
-	
-	var iter_spread = spread/iterations
+
+	var iter_spread = spread / iterations
 	for i in range(iterations):
 		for j in range(points.size() - 1):
-			var d = iter_spread * (points[j].height - points[j+1].height)
+			var diff = points[j].height - points[j+1].height
+			var d = iter_spread * diff
 			points[j].velocity -= d
 			points[j+1].velocity += d
-		
 		points[0].velocity *= 0.5
 		points[points.size() - 1].velocity *= 0.5
-	
-	apply_body_forces()
+	apply_body_forces(delta)
 	queue_redraw()
 
 class WaterPoint:
@@ -119,15 +117,31 @@ class WaterPoint:
 	var velocity: float
 	var rest_height: float
 
-func splash(index: int, impulse: float):
-	var v = impulse * impulse_factor
-	points[index].velocity += v
-	if index > 0: points[index - 1].velocity += impulse * impulse_factor * 0.5
-	if index < points.size() - 1: points[index + 1].velocity += impulse * impulse_factor * 0.5
+func splash(x: int, impulse: float):
+	points[x].velocity += impulse
+	if x > 0:
+		points[x-1].velocity += impulse * 0.5
+	if x < points.size()-1:
+		points[x+1].velocity += impulse * 0.5
 
-func apply_body_forces():
+func apply_body_forces(delta):
 	for body in bodies_in_water:
-		pass
+		var local_pos = to_local(body.global_position)
+		var x = int(local_pos.x)
+		x = clamp(x, 0, points.size()-1)
+		
+		var surface_y = points[x].rest_height
+		var bottom_y = get_bottom_y_at_x(x)
+		var water_depth = bottom_y - surface_y
+		
+		if water_depth <= 0:
+			continue
+		
+		var body_depth = local_pos.y - surface_y
+		var influence = 1.0 - clamp(body_depth / (water_depth + 8), 0.0, 1.0)
+		var impulse = body.velocity.y * 0.5
+		impulse += abs(body.velocity.x) * impulse_factor
+		splash(x, impulse * influence * delta)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	bodies_in_water.append(body)

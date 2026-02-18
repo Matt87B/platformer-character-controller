@@ -2,12 +2,8 @@ class_name WallSlideState extends StateMachine
 
 ## Auto-generated StateMachine stub
 
-func _on_enter() -> void: 
-	print("Entered WallSlideState")
+func _on_enter() -> void:
 	player.velocity.y = 0
-
-func _on_exit() -> void:
-	print("Exited WallSlideState")
 
 func _on_update(delta: float) -> void:
 	
@@ -17,8 +13,8 @@ func _on_update(delta: float) -> void:
 	player.velocity.x = player.speed * input_dir
 	
 	if not (player.is_on_wall_only() and input_dir != 0):
-		send_trigger(player.FALL)
+		send_trigger(OnGroundState.FALL)
 	else:
 		if player.jump_buffer_timer > 0 and player.jump_cooldown_timer == 0 and player.coyote_timer > 0:
 			player.velocity.x = player.wall_pushback * -input_dir
-			send_trigger(player.JUMP)
+			send_trigger(OnGroundState.JUMP)
