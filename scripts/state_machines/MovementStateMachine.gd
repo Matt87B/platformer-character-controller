@@ -16,6 +16,3 @@ func _ready() -> void:
 	add_transition(on_ground_state, in_water_state, SWIM)
 	
 	get_parent()._default = self
-	
-func _on_update(delta: float) -> void:
-	pass # TODO: Implement

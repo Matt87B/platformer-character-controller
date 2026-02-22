@@ -11,7 +11,7 @@ func _on_update(delta: float) -> void:
 	player.velocity.y += player.gravity * delta
 	player.velocity.y = min(player.terminal_velocity, player.velocity.y)
 	
-	if Input.is_action_just_released("jump") and player.velocity.y < 0:
+	if not Input.is_action_pressed("jump") and player.velocity.y < 0:
 		player.velocity.y *= player.jump_cut_mult * delta
 	
 	if player.is_on_floor():

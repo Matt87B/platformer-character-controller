@@ -13,5 +13,5 @@ func _on_update(delta: float) -> void:
 			send_trigger(OnGroundState.IDLE)
 		else:
 			send_trigger(OnGroundState.RUN)
-	elif player.is_on_wall_only() and input_dir != 0:
+	elif player.is_on_wall_only() and input_dir != 0 and player.velocity.y > 0:
 		send_trigger(OnGroundState.WALL)

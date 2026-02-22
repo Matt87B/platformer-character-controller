@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkeuyqpnv05fw"]
+[gd_scene load_steps=10 format=3 uid="uid://dkeuyqpnv05fw"]
 
 [ext_resource type="Script" path="res://scripts/state_machines/PlayerStateMachine.gd" id="1_ocfn2"]
 [ext_resource type="Script" path="res://scripts/state_machines/MovementStateMachine.gd" id="2_h18ae"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/states/FallState.gd" id="6_jdc04"]
 [ext_resource type="Script" path="res://scripts/states/WallSlideState.gd" id="7_txlh5"]
 [ext_resource type="Script" path="res://scripts/state_machines/InWaterState.gd" id="8_emrkc"]
-[ext_resource type="Script" path="res://scripts/states/SwimState.gd" id="8_y4qw3"]
 
 [node name="PlayerFSM" type="Node2D"]
 script = ExtResource("1_ocfn2")
@@ -19,9 +18,6 @@ script = ExtResource("2_h18ae")
 
 [node name="InWaterState" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("8_emrkc")
-
-[node name="SwimState" type="Node2D" parent="MovementStateMachine/InWaterState"]
-script = ExtResource("8_y4qw3")
 
 [node name="OnGroundState" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("2_p31jc")
