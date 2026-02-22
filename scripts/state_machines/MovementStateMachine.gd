@@ -15,4 +15,8 @@ func _ready() -> void:
 	add_transition(in_water_state, on_ground_state, GROUND)
 	add_transition(on_ground_state, in_water_state, SWIM)
 	
-	get_parent()._default = self
+	_default = on_ground_state
+	enter_state_machine(get_parent())
+
+func _physics_process(delta: float) -> void:
+	update_state_machine(delta)

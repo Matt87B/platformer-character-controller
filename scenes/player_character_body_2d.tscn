@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnle5o0k2a3q"]
+[gd_scene load_steps=7 format=3 uid="uid://dnle5o0k2a3q"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/Player.gd" id="1_yi1hc"]
-[ext_resource type="PackedScene" uid="uid://dkeuyqpnv05fw" path="res://scenes/player_fsm.tscn" id="2_i0ma7"]
+[ext_resource type="PackedScene" uid="uid://df3fdxubdyxnk" path="res://scenes/movement_state_machine.tscn" id="3_jetwl"]
 [ext_resource type="Texture2D" uid="uid://bqrknnlqay8kv" path="res://textures/player_textures/icon.svg" id="3_ya46d"]
+[ext_resource type="PackedScene" uid="uid://c6g8v0s7mw78s" path="res://scenes/status_state_machine.tscn" id="4_k0g1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u371u"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67qig"]
 size = Vector2(12, 12)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D"]
@@ -18,4 +22,14 @@ shape = SubResource("RectangleShape2D_u371u")
 scale = Vector2(0.09375, 0.09375)
 texture = ExtResource("3_ya46d")
 
-[node name="PlayerFSM" parent="." instance=ExtResource("2_i0ma7")]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_67qig")
+
+[node name="MovementStateMachine" parent="." instance=ExtResource("3_jetwl")]
+
+[node name="StatusStateMachine" parent="." instance=ExtResource("4_k0g1u")]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cljdeay1wf7e0"]
+
+[ext_resource type="Script" path="res://scripts/water/WaterBody.gd" id="1_lok4e"]
+
+[node name="WaterBody" type="Node2D"]
+position = Vector2(80, 56)
+script = ExtResource("1_lok4e")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["water"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 9, 23, 9, 23, 17, 39, 17, 39, 25, 81, 25, 81, 17, 97, 17, 97, 9, 104, 9)
+width = 1.0
+default_color = Color(1, 1, 1, 0)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

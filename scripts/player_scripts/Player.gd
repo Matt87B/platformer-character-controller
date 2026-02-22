@@ -17,11 +17,12 @@ var jump_cooldown_timer := 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water : bool = false
 
-@onready var state_machine : StateMachine = $PlayerFSM
+@onready var movement_state_machine : StateMachine = $MovementStateMachine
+@onready var status_state_machine : StateMachine = $StatusStateMachine
 
 #Called when the player enters the scene tree
 func _ready() -> void:
-	state_machine.enter_state_machine(self)
+	pass
 
 func _physics_process(delta: float) -> void:
 	#This handles Coyote time
@@ -37,12 +38,12 @@ func _physics_process(delta: float) -> void:
 	
 	jump_cooldown_timer = max(jump_cooldown_timer - delta, 0)
 	
-	state_machine.update_state_machine(delta)
 	move_and_slide()
+	
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("water"):
+		is_in_water = true
 
-#Called whenever player enters or exits water
-func _on_water_body_entered(_body: Node2D) -> void:
-	is_in_water = true
-
-func _on_water_body_exited(_body: Node2D) -> void:
-	is_in_water = false
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("water"):
+		is_in_water = false

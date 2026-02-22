@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6g8v0s7mw78s"]
+
+[ext_resource type="Script" path="res://scripts/state_machines/StatusStateMachine.gd" id="1_lc5lh"]
+[ext_resource type="Script" path="res://scripts/states/NormalState.gd" id="2_2lw7b"]
+[ext_resource type="Script" path="res://scripts/states/HurtState.gd" id="3_q3dwd"]
+[ext_resource type="Script" path="res://scripts/states/DieState.gd" id="4_tso00"]
+
+[node name="StatusStateMachine" type="Node2D"]
+script = ExtResource("1_lc5lh")
+
+[node name="NormalState" type="Node2D" parent="."]
+script = ExtResource("2_2lw7b")
+
+[node name="HurtState" type="Node2D" parent="."]
+script = ExtResource("3_q3dwd")
+
+[node name="DieState" type="Node2D" parent="."]
+script = ExtResource("4_tso00")

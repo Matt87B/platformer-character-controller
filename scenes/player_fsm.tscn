@@ -1,40 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkeuyqpnv05fw"]
+[gd_scene load_steps=4 format=3 uid="uid://dkeuyqpnv05fw"]
 
 [ext_resource type="Script" path="res://scripts/state_machines/PlayerStateMachine.gd" id="1_ocfn2"]
-[ext_resource type="Script" path="res://scripts/state_machines/MovementStateMachine.gd" id="2_h18ae"]
-[ext_resource type="Script" path="res://scripts/state_machines/OnGroundState.gd" id="2_p31jc"]
-[ext_resource type="Script" path="res://scripts/states/IdleState.gd" id="3_lgths"]
-[ext_resource type="Script" path="res://scripts/states/RunState.gd" id="4_fsr2x"]
-[ext_resource type="Script" path="res://scripts/states/JumpState.gd" id="5_cbodr"]
-[ext_resource type="Script" path="res://scripts/states/FallState.gd" id="6_jdc04"]
-[ext_resource type="Script" path="res://scripts/states/WallSlideState.gd" id="7_txlh5"]
-[ext_resource type="Script" path="res://scripts/state_machines/InWaterState.gd" id="8_emrkc"]
+[ext_resource type="PackedScene" uid="uid://df3fdxubdyxnk" path="res://scenes/movement_state_machine.tscn" id="2_nwuek"]
+[ext_resource type="PackedScene" uid="uid://c6g8v0s7mw78s" path="res://scenes/status_state_machine.tscn" id="3_nh8kg"]
 
 [node name="PlayerFSM" type="Node2D"]
 script = ExtResource("1_ocfn2")
 
-[node name="MovementStateMachine" type="Node2D" parent="."]
-script = ExtResource("2_h18ae")
+[node name="MovementStateMachine" parent="." instance=ExtResource("2_nwuek")]
 
-[node name="InWaterState" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("8_emrkc")
-
-[node name="OnGroundState" type="Node2D" parent="MovementStateMachine"]
-script = ExtResource("2_p31jc")
-
-[node name="IdleState" type="Node2D" parent="MovementStateMachine/OnGroundState"]
-script = ExtResource("3_lgths")
-
-[node name="RunState" type="Node2D" parent="MovementStateMachine/OnGroundState"]
-script = ExtResource("4_fsr2x")
-
-[node name="JumpState" type="Node2D" parent="MovementStateMachine/OnGroundState"]
-script = ExtResource("5_cbodr")
-
-[node name="FallState" type="Node2D" parent="MovementStateMachine/OnGroundState"]
-script = ExtResource("6_jdc04")
-
-[node name="WallSlideState" type="Node2D" parent="MovementStateMachine/OnGroundState"]
-script = ExtResource("7_txlh5")
-
-[node name="AirborneState" type="Node2D" parent="MovementStateMachine"]
+[node name="StatusStateMachine" parent="." instance=ExtResource("3_nh8kg")]

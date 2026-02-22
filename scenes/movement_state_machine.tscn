@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://df3fdxubdyxnk"]
+
+[ext_resource type="Script" path="res://scripts/state_machines/MovementStateMachine.gd" id="1_dt8th"]
+[ext_resource type="Script" path="res://scripts/state_machines/InWaterState.gd" id="2_lkopn"]
+[ext_resource type="Script" path="res://scripts/state_machines/OnGroundState.gd" id="3_smxrs"]
+[ext_resource type="Script" path="res://scripts/states/IdleState.gd" id="4_0oiyw"]
+[ext_resource type="Script" path="res://scripts/states/RunState.gd" id="5_n3fu6"]
+[ext_resource type="Script" path="res://scripts/states/JumpState.gd" id="6_bkjmk"]
+[ext_resource type="Script" path="res://scripts/states/FallState.gd" id="7_quhrv"]
+[ext_resource type="Script" path="res://scripts/states/WallSlideState.gd" id="8_n4qey"]
+
+[node name="MovementStateMachine" type="Node2D"]
+script = ExtResource("1_dt8th")
+
+[node name="InWaterState" type="Node2D" parent="."]
+script = ExtResource("2_lkopn")
+
+[node name="OnGroundState" type="Node2D" parent="."]
+script = ExtResource("3_smxrs")
+
+[node name="IdleState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("4_0oiyw")
+
+[node name="RunState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("5_n3fu6")
+
+[node name="JumpState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("6_bkjmk")
+
+[node name="FallState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("7_quhrv")
+
+[node name="WallSlideState" type="Node2D" parent="OnGroundState"]
+script = ExtResource("8_n4qey")
+
+[node name="AirborneState" type="Node2D" parent="."]
