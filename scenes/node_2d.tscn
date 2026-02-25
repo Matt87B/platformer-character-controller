@@ -2840,6 +2840,48 @@ texture_region_size = Vector2i(8, 8)
 8: [3],
 "type": 3
 }
+0:20/animation_columns = 3
+0:20/animation_separation = Vector2i(8, 0)
+0:20/0 = 0
+0:20/0/metadata/_better_terrain = {
+"type": 6
+}
+2:20/animation_columns = 1
+2:20/0 = 0
+2:21/0 = 0
+1:21/0 = 0
+0:21/animation_columns = 3
+0:21/animation_separation = Vector2i(8, 0)
+0:21/0 = 0
+0:21/0/metadata/_better_terrain = {
+"type": 6
+}
+0:22/animation_columns = 3
+0:22/animation_separation = Vector2i(8, 0)
+0:22/0 = 0
+0:22/0/metadata/_better_terrain = {
+"type": 6
+}
+1:22/0 = 0
+2:22/0 = 0
+2:23/0 = 0
+1:23/0 = 0
+0:23/animation_columns = 3
+0:23/animation_separation = Vector2i(8, 0)
+0:23/0 = 0
+0:23/0/metadata/_better_terrain = {
+"type": 6
+}
+0:24/animation_columns = 3
+0:24/animation_separation = Vector2i(8, 0)
+0:24/0 = 0
+0:24/0/metadata/_better_terrain = {
+"type": 6
+}
+1:24/0 = 0
+2:24/0 = 0
+1:20/animation_columns = 1
+1:20/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ggxc4"]
 tile_size = Vector2i(8, 8)
@@ -2860,6 +2902,8 @@ metadata/_better_terrain = {
 }], ["Red Mud Bricks", Color(0.97, 0.381533, 0.0873, 1), 0, [], {
 "path": ""
 }], ["Clay Bricks", Color(0.988281, 0.583866, 0.0115814, 1), 0, [], {
+"path": ""
+}], ["Electricity", Color(0.779405, 0.781349, 0.532557, 1), 0, [], {
 "path": ""
 }]],
 "version": "0.2"
