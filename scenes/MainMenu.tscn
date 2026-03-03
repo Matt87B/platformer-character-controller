@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d3o5s6eflvv0t"]
+
+[node name="MainMenu" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resume" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Save" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
