@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3o5s6eflvv0t"]
 
-[ext_resource type="FontFile" uid="uid://ddogs6fdy5i0b" path="res://assets/fonts/FunnelSans-Regular.ttf" id="1_0f8kt"]
-[ext_resource type="Script" path="res://scripts/user_interface/main_menu/MainMenu.gd" id="1_2ef4g"]
+[ext_resource type="Script" path="res://scripts/user_interface/main_menu/MainMenu.gd" id="1_fqyx7"]
+[ext_resource type="FontFile" uid="uid://ddogs6fdy5i0b" path="res://assets/fonts/FunnelSans-Regular.ttf" id="2_c6qvo"]
 
 [sub_resource type="Theme" id="Theme_0bk8b"]
-default_font = ExtResource("1_0f8kt")
+default_font = ExtResource("2_c6qvo")
 default_font_size = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wn7el"]
@@ -46,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2ef4g")
+script = ExtResource("1_fqyx7")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]
