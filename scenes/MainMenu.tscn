@@ -1,32 +1,155 @@
-[gd_scene format=3 uid="uid://d3o5s6eflvv0t"]
+[gd_scene load_steps=8 format=3 uid="uid://d3o5s6eflvv0t"]
 
-[node name="MainMenu" type="MarginContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[ext_resource type="FontFile" uid="uid://ddogs6fdy5i0b" path="res://assets/fonts/FunnelSans-Regular.ttf" id="1_0f8kt"]
+[ext_resource type="Script" path="res://scripts/user_interface/main_menu/MainMenu.gd" id="1_2ef4g"]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[sub_resource type="Theme" id="Theme_0bk8b"]
+default_font = ExtResource("1_0f8kt")
+default_font_size = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wn7el"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y624n"]
+bg_color = Color(0.733005, 0.733005, 0.733005, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(0, 1.5)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n462a"]
+bg_color = Color(0.281187, 0.281187, 0.281187, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(0, 1.5)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhw8m"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(0, 1.5)
+anti_aliasing = false
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ef4g")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 42.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 15
+text = "Game Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -11.0
+offset_right = 30.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0bk8b")
+theme_override_constants/separation = 2
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wn7el")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y624n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n462a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mhw8m")
+text = "Play"
+
+[node name="Load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wn7el")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y624n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n462a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mhw8m")
+text = "Load "
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wn7el")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y624n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n462a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mhw8m")
+text = "Options"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wn7el")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y624n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n462a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mhw8m")
+text = "Quit"
+
+[node name="Logo" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="Logo" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Resume" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Settings" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Save" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Quit" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="Image" type="TextureRect" parent="HBoxContainer/CenterContainer"]
-layout_mode = 2
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

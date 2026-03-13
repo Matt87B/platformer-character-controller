@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=4 uid="uid://bcxtvtu2up0aw"]
 
 [ext_resource type="PackedScene" uid="uid://dnle5o0k2a3q" path="res://scenes/player_character_body_2d.tscn" id="1_dbf5h"]
-[ext_resource type="Texture2D" uid="uid://ba4gj7uai3200" path="res://textures/tile_maps/laboratory_tiles.png" id="2_eecb4"]
-[ext_resource type="Texture2D" uid="uid://bvblq0agysp33" path="res://textures/tile_maps/natural_tiles.png" id="3_58epm"]
+[ext_resource type="Texture2D" uid="uid://ba4gj7uai3200" path="res://assets/textures/tile_maps/laboratory_tiles.png" id="2_eecb4"]
+[ext_resource type="Texture2D" uid="uid://bvblq0agysp33" path="res://assets/textures/tile_maps/natural_tiles.png" id="3_58epm"]
 [ext_resource type="PackedScene" uid="uid://cljdeay1wf7e0" path="res://scenes/water_body.tscn" id="3_wnh08"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0y7qw"]
@@ -3264,11 +3264,3 @@ tile_set = SubResource("TileSet_ggxc4")
 
 [node name="TileMapLaboratory" type="TileMapLayer" parent="TileMaps"]
 tile_set = SubResource("TileSet_y7rbd")
-
-[node name="GUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

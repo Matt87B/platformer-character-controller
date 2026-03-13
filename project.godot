@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Platformer Character Controller"
-run/main_scene="res://scenes/node_2d.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
@@ -32,6 +32,8 @@ enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://assets/": "purple",
+"res://assets/fonts/": "orange",
 "res://scenes/": "teal",
 "res://script_templates/": "red",
 "res://scripts/": "pink"
@@ -40,6 +42,10 @@ folder_colors={
 [global_group]
 
 water=""
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
@@ -77,3 +83,4 @@ move_up={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
+2d/snap/snap_2d_transforms_to_pixel=true
