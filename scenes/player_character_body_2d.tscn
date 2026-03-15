@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnle5o0k2a3q"]
+[gd_scene format=3 uid="uid://dnle5o0k2a3q"]
 
-[ext_resource type="Script" path="res://scripts/player_scripts/Player.gd" id="1_yi1hc"]
+[ext_resource type="Script" uid="uid://btu7wgdocx7qm" path="res://scripts/player_scripts/Player.gd" id="1_yi1hc"]
 [ext_resource type="PackedScene" uid="uid://df3fdxubdyxnk" path="res://scenes/movement_state_machine.tscn" id="3_jetwl"]
 [ext_resource type="Texture2D" uid="uid://bqrknnlqay8kv" path="res://assets/textures/player/icon.svg" id="3_ya46d"]
 [ext_resource type="PackedScene" uid="uid://c6g8v0s7mw78s" path="res://scenes/status_state_machine.tscn" id="4_k0g1u"]
@@ -11,25 +11,32 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67qig"]
 size = Vector2(12, 12)
 
-[node name="PlayerCharacterBody2D" type="CharacterBody2D"]
+[node name="PlayerCharacterBody2D" type="CharacterBody2D" unique_id=1648065036]
 script = ExtResource("1_yi1hc")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=90877740]
+position = Vector2(0, 1)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 0.2
+drag_vertical_offset = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1302161196]
 shape = SubResource("RectangleShape2D_u371u")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=347204043]
 scale = Vector2(0.09375, 0.09375)
 texture = ExtResource("3_ya46d")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=2085940391]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=523554296]
 shape = SubResource("RectangleShape2D_67qig")
 
-[node name="MovementStateMachine" parent="." instance=ExtResource("3_jetwl")]
+[node name="MovementStateMachine" parent="." unique_id=1913372134 instance=ExtResource("3_jetwl")]
 
-[node name="StatusStateMachine" parent="." instance=ExtResource("4_k0g1u")]
+[node name="StatusStateMachine" parent="." unique_id=151768091 instance=ExtResource("4_k0g1u")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
