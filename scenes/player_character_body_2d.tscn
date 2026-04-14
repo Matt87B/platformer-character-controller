@@ -8,6 +8,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u371u"]
 size = Vector2(12, 12)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6kdqf"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"sprite_frames",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67qig"]
 size = Vector2(12, 12)
 
@@ -28,6 +41,10 @@ shape = SubResource("RectangleShape2D_u371u")
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=347204043]
 scale = Vector2(0.09375, 0.09375)
 texture = ExtResource("3_ya46d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=597589650]
+sprite_frames = SubResource("SpriteFrames_6kdqf")
+animation = &"sprite_frames"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2085940391]
 

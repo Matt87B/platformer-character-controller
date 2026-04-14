@@ -21,8 +21,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
-SceneStack="*res://scripts/autoload/SceneStackManager.gd"
-LevelContainer="*res://scripts/autoload/LevelContainer.gd"
+GameStateManager="*uid://bkrnd3im8yamy"
 
 [display]
 
@@ -39,6 +38,7 @@ enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 folder_colors={
 "res://assets/": "purple",
+"res://assets/dialogue/": "teal",
 "res://assets/fonts/": "orange",
 "res://scenes/": "teal",
 "res://script_templates/": "red",
