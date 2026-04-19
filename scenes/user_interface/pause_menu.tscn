@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://sf4icklabegj" path="res://scripts/user_interface/pause_menu/PauseMenu.gd" id="1_myx47"]
 [ext_resource type="FontFile" uid="uid://ddogs6fdy5i0b" path="res://assets/fonts/FunnelSans-Regular.ttf" id="1_n87rw"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p2u1"]
+bg_color = Color(0.18039216, 0.18431373, 0.20784314, 1)
+
 [sub_resource type="Theme" id="Theme_myx47"]
 default_font = ExtResource("1_n87rw")
 default_font_size = 5
@@ -55,6 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8p2u1")
 
 [node name="Label" type="Label" parent="." unique_id=26337162]
 layout_mode = 1

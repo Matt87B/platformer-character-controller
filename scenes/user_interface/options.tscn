@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://tqlci7nrxndl" path="res://scripts/user_interface/options/Options.gd" id="1_3bdj0"]
 [ext_resource type="FontFile" uid="uid://ddogs6fdy5i0b" path="res://assets/fonts/FunnelSans-Regular.ttf" id="2_2nhbo"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35ttx"]
+bg_color = Color(0.18039216, 0.18431373, 0.20784314, 1)
+
 [sub_resource type="Theme" id="Theme_rixom"]
 default_font = ExtResource("2_2nhbo")
 default_font_size = 5
@@ -55,6 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_35ttx")
 
 [node name="Label" type="Label" parent="." unique_id=1767743418]
 layout_mode = 1
@@ -95,7 +99,6 @@ theme_override_constants/separation = 2
 
 [node name="Video" type="Button" parent="VBoxContainer" unique_id=2018743423]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -108,7 +111,6 @@ text = "Video"
 
 [node name="Sound" type="Button" parent="VBoxContainer" unique_id=1133203011]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -121,7 +123,6 @@ text = "Sound"
 
 [node name="Controls" type="Button" parent="VBoxContainer" unique_id=483491544]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -134,7 +135,6 @@ text = "Controls"
 
 [node name="Back" type="Button" parent="VBoxContainer" unique_id=720101697]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)

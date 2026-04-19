@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://d04h7s0lhotjv" path="res://scripts/user_interface/main_menu/MainMenu.gd" id="1_fqyx7"]
 [ext_resource type="FontFile" uid="uid://ddogs6fdy5i0b" path="res://assets/fonts/FunnelSans-Regular.ttf" id="2_c6qvo"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsm3n"]
+bg_color = Color(0.17885962, 0.185907, 0.20905831, 1)
+
 [sub_resource type="Theme" id="Theme_0bk8b"]
 default_font = ExtResource("2_c6qvo")
 default_font_size = 5
@@ -55,6 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xsm3n")
 
 [node name="Label" type="Label" parent="." unique_id=1237427173]
 layout_mode = 1
@@ -95,7 +99,6 @@ theme_override_constants/separation = 2
 
 [node name="Play" type="Button" parent="VBoxContainer" unique_id=324646088]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -108,7 +111,6 @@ text = "Play"
 
 [node name="Load" type="Button" parent="VBoxContainer" unique_id=858290443]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -121,7 +123,6 @@ text = "Load "
 
 [node name="Options" type="Button" parent="VBoxContainer" unique_id=480050666]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -134,7 +135,6 @@ text = "Options"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1546361232]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)

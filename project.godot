@@ -22,6 +22,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 GameStateManager="*uid://bkrnd3im8yamy"
+InputManager="*uid://be4dtjmmd6k5h"
 
 [display]
 
@@ -89,4 +90,3 @@ move_up={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
-2d/snap/snap_2d_transforms_to_pixel=true

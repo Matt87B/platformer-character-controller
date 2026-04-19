@@ -15,14 +15,10 @@ var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 var jump_cooldown_timer := 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var is_in_water : bool = false
+var is_in_water := false
 
 @onready var movement_state_machine : StateMachine = $MovementStateMachine
 @onready var status_state_machine : StateMachine = $StatusStateMachine
-
-#Called when the player enters the scene tree
-func _ready() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	#This handles Coyote time
