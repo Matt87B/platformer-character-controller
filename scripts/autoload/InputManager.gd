@@ -21,6 +21,9 @@ func _update_movement():
 func get_move_input() -> float:
 	return _move_input
 
+func is_move_pressed() -> bool:
+	return not is_equal_approx(_move_input, 0.0)
+
 #Jump
 func _update_jump():
 	_jump_just_pressed = Input.is_action_just_pressed("jump")
@@ -43,7 +46,8 @@ func is_jump_just_released() -> bool:
 func _update_buffer(delta):
 	if _jump_buffer_timer > 0:
 		_jump_buffer_timer -= delta
-
+	
+##Returns true if jump buffer was consumed, false otherwise
 func consume_jump_buffer() -> bool:
 	if _jump_buffer_timer > 0:
 		_jump_buffer_timer = 0

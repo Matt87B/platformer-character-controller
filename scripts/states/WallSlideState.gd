@@ -10,11 +10,11 @@ func _on_update(delta: float) -> void:
 	var input_dir = Input.get_axis("move_left", "move_right")
 	
 	player.velocity.y += (player.gravity * player.wall_slide_factor) * delta
-	player.velocity.x = player.speed * input_dir
+	player.perform_move(InputManager.get_move_input())
 	
 	if not (player.is_on_wall_only() and input_dir != 0):
 		send_trigger(OnGroundState.FALL)
 	else:
-		if player.jump_buffer_timer > 0 and player.jump_cooldown_timer == 0 and player.coyote_timer > 0:
+		if player.can_jump() and InputManager.consume_jump_buffer():
 			player.velocity.x = player.wall_pushback * -input_dir
 			send_trigger(OnGroundState.JUMP)

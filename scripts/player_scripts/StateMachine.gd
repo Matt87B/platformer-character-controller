@@ -15,7 +15,7 @@ var player : Player
 
 ##This function enters the current state
 func enter_state_machine(p: Player) -> void:
-	print("Entered %s" %self)
+	print("Entered %s" %self.name)
 	self.player = p
 	_on_enter()
 	if (_current == null and _default != null):
@@ -29,7 +29,6 @@ func update_state_machine(delta: float) -> void:
 	_on_update(delta)
 ##This function exits the current state
 func exit_state_machine() -> void:
-	print("Exited %s" %self)
 	if _current != null:
 		_current.exit_state_machine()
 		_current = null
