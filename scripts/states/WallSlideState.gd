@@ -12,7 +12,7 @@ func _on_update(delta: float) -> void:
 	player.velocity.y += (player.gravity * player.wall_slide_factor) * delta
 	player.perform_move(InputManager.get_move_input())
 	
-	if not (player.is_on_wall_only() and input_dir != 0):
+	if not player.can_wall_slide():
 		send_trigger(OnGroundState.FALL)
 	else:
 		if player.can_jump() and InputManager.consume_jump_buffer():

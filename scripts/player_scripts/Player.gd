@@ -47,7 +47,7 @@ func perform_move(move_input: float):
 #Wall logic
 func can_wall_slide():
 	return is_on_wall_only() and InputManager.is_move_pressed() and velocity.y > 0
-	
+
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
