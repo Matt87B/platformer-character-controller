@@ -15,6 +15,8 @@ var jump_cooldown_timer := 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_in_water := false
 
+var _facing = 1.0
+
 @onready var movement_state_machine : StateMachine = $MovementStateMachine
 @onready var status_state_machine : StateMachine = $StatusStateMachine
 
@@ -40,15 +42,18 @@ func perform_jump():
 	velocity.y = -jump_impulse
 
 #Movement logic
-func perform_move(move_input: float):
-	##Have the player move. Automatically factors in player speed.
+func perform_move(move_input: float) -> void:
 	velocity.x = speed * move_input
+	if not is_equal_approx(move_input, 0.0):
+		_facing = signf(move_input)
 
 #Wall logic
 func can_wall_slide():
 	return is_on_wall_only() and InputManager.is_move_pressed() and velocity.y > 0
 
-
+#Getter functions
+func get_facing() -> float:
+	return _facing
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("water"):

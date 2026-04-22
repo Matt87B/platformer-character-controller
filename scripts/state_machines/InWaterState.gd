@@ -19,11 +19,14 @@ func _on_enter() -> void:
 func _on_update(delta: float) -> void:
 	var vertical_force := 0.0
 	var horizontal_force := 0.0
-	var input_dir = Input.get_axis("move_left", "move_right")
+	var input_dir = InputManager.get_move_input()
 	
 	vertical_force += player.gravity
 	vertical_force -= buoyancy
 	horizontal_force = input_dir * water_speed
+	
+	if not is_equal_approx(input_dir, 0.0):
+		player._facing = signf(input_dir)
 	
 	if Input.is_action_pressed("jump"):
 		vertical_force -= swim_force

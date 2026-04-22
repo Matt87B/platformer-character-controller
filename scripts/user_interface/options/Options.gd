@@ -7,10 +7,10 @@ func _on_back_pressed() -> void:
 	go_back.emit()
 
 func _on_controls_pressed() -> void:
-	navigate_to.emit("res://scenes/user_interface/controls.tscn")
+	navigate_to.emit(GameStateManager.SCENE_CONTROLS)
 	
 func _on_sound_pressed() -> void:
-	navigate_to.emit("res://scenes/user_interface/sound.tscn")
+	navigate_to.emit(GameStateManager.SCENE_SOUND)
 	
 func _on_video_pressed() -> void:
-	navigate_to.emit("res://scenes/user_interface/video.tscn")
+	navigate_to.emit(GameStateManager.SCENE_VIDEO)

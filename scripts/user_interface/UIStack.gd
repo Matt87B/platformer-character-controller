@@ -5,7 +5,6 @@ extends Control
 @onready var _scene_stack: Node2D = $SceneStack
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	_scene_stack.initialize(_menus)
 
 	GameStateManager.state_changed.connect(_on_state_changed)
@@ -53,6 +52,7 @@ func _on_state_changed(state: GameStateManager.GameState) -> void:
 			clear_menus()
 			show_hud()
 		GameStateManager.GameState.PAUSED:
+			hide_hud()
 			push_menu(GameStateManager.SCENE_PAUSE_MENU)
 		GameStateManager.GameState.DIALOGUE:
 			push_menu(GameStateManager.SCENE_DIALOGUE)

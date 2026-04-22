@@ -3238,7 +3238,7 @@ metadata/_better_terrain = {
 
 [node name="Level1" type="Node2D" unique_id=575627776]
 
-[node name="PlayerCharacterBody2D" parent="." unique_id=627763646 instance=ExtResource("1_5xbjy")]
+[node name="PlayerCharacterBody2D" parent="." unique_id=627763646 groups=["player"] instance=ExtResource("1_5xbjy")]
 position = Vector2(84, 28)
 collision_mask = 2
 

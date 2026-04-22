@@ -1,5 +1,7 @@
 extends Node
 
+@onready var _camera: Camera2D = $Camera2D
+
 var _current_level: Node = null
 
 func _ready() -> void:
@@ -15,7 +17,16 @@ func load_level(scene_path: String) -> void:
 		return
 	_current_level = packed.instantiate()
 	add_child(_current_level)
+	_assign_camera_target()
 	GameStateManager.level_loaded.emit()
+
+func _assign_camera_target() -> void:
+	# Assumes your player is in the "player" group
+	var player := get_tree().get_first_node_in_group("player")
+	if player:
+		_camera.target = player
+	else:
+		push_warning("LevelContainer: no player node found in group 'player'")
 
 func unload_level() -> void:
 	_unload_current()

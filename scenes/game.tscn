@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://botau1l2d3s6o" path="res://scripts/core/Game.gd" id="1_ad36x"]
 [ext_resource type="Script" uid="uid://i43oork4kop7" path="res://scripts/core/LevelContainer.gd" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://bibfadqxd4m55" path="res://scripts/user_interface/UIStack.gd" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://cihj2vt06358" path="res://scripts/core/CameraController.gd" id="3_iywne"]
 [ext_resource type="Script" uid="uid://cxuasblg0t8j0" path="res://scripts/autoload/SceneStackManager.gd" id="3_lnu2h"]
 
 [node name="Game" type="Node2D" unique_id=1797940453]
@@ -11,7 +12,11 @@ script = ExtResource("1_ad36x")
 [node name="World" type="Node2D" parent="." unique_id=1507917860]
 
 [node name="LevelContainer" type="Node2D" parent="World" unique_id=1978157750]
+process_mode = 1
 script = ExtResource("2_lbhrr")
+
+[node name="Camera2D" type="Camera2D" parent="World/LevelContainer" unique_id=1542571120]
+script = ExtResource("3_iywne")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=798466470]
 
@@ -44,4 +49,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SceneStack" type="Node2D" parent="UI/UIStack" unique_id=139215027]
+process_mode = 3
 script = ExtResource("3_lnu2h")
