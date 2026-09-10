@@ -26,6 +26,7 @@ func _assign_camera_target() -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	if player:
 		_camera.target = player
+		_camera.jump_to_target()
 	else:
 		push_warning("LevelContainer: no player node found in group 'player'")
 

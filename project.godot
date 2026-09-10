@@ -23,7 +23,11 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 GameStateManager="*uid://bkrnd3im8yamy"
 InputManager="*uid://be4dtjmmd6k5h"
+<<<<<<< HEAD
 AudioManager="*uid://cetyr63dxjhh3"
+=======
+TransitionManager="*uid://7tn024rdq0d1"
+>>>>>>> f484b82530684bbd77933c348258b28ab9d4d7fa
 
 [display]
 

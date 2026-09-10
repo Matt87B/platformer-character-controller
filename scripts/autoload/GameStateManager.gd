@@ -1,7 +1,7 @@
 ## GameStateManager.gd
 ## Autoload singleton — owns all state transitions and scene-path configuration.
 ## Nothing outside this file should call set_state() directly.
-extends Node
+extends Node2D
 
 #Scene paths
 const SCENE_MAIN_MENU	:= "res://scenes/user_interface/main_menu.tscn"
@@ -107,8 +107,8 @@ func save_and_exit_to_menu() -> void:
 	set_state(GameState.MENU)
 
 func quit_game() -> void:
+	TransitionManager.fade_out(1.0)
 	get_tree().quit()
-
 
 func set_state(new_state: GameState) -> void:
 	if new_state == current_state:
@@ -137,6 +137,7 @@ func _exit_state(_state: GameState) -> void:
 
 #LevelContainer feedback
 func _on_level_loaded() -> void:
+	TransitionManager.fade_in(1.0)
 	set_state(GameState.GAMEPLAY)
 
 #Global input
