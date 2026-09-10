@@ -16,6 +16,7 @@ func load_level(scene_path: String) -> void:
 		push_error("LevelContainer: failed to load level '%s'" % scene_path)
 		return
 	_current_level = packed.instantiate()
+	GameStateManager.respawn_position = Vector2.ZERO
 	add_child(_current_level)
 	_assign_camera_target()
 	GameStateManager.level_loaded.emit()

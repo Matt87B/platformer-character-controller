@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3o5s6eflvv0t"]
 
-[ext_resource type="Script" uid="uid://d04h7s0lhotjv" path="res://scripts/user_interface/main_menu/MainMenu.gd" id="1_fqyx7"]
+[ext_resource type="Script" uid="uid://d04h7s0lhotjv" path="res://scripts/user_interface/MainMenu.gd" id="1_fqyx7"]
 [ext_resource type="FontFile" uid="uid://ddogs6fdy5i0b" path="res://assets/fonts/FunnelSans-Regular.ttf" id="2_c6qvo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsm3n"]
@@ -9,6 +9,8 @@ bg_color = Color(0.17885962, 0.185907, 0.20905831, 1)
 [sub_resource type="Theme" id="Theme_0bk8b"]
 default_font = ExtResource("2_c6qvo")
 default_font_size = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsm3n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhw8m"]
 bg_color = Color(1, 1, 1, 1)
@@ -60,19 +62,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xsm3n")
 
-[node name="Label" type="Label" parent="." unique_id=1237427173]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=359071196]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -42.0
-offset_right = 42.0
-offset_bottom = -19.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=906820220]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = SubResource("Theme_0bk8b")
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1237427173]
+layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/font_size = 15
@@ -80,25 +89,15 @@ text = "Game Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=906820220]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -11.0
-offset_right = 30.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_0bk8b")
-theme_override_constants/separation = 2
-
-[node name="Play" type="Button" parent="VBoxContainer" unique_id=324646088]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=636228800]
 layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xsm3n")
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer" unique_id=324646088]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -109,8 +108,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_y624n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wn7el")
 text = "Play"
 
-[node name="Load" type="Button" parent="VBoxContainer" unique_id=858290443]
+[node name="Load" type="Button" parent="MarginContainer/VBoxContainer" unique_id=858290443]
+custom_minimum_size = Vector2(50, 10)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -121,8 +122,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_y624n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wn7el")
 text = "Load "
 
-[node name="Options" type="Button" parent="VBoxContainer" unique_id=480050666]
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer" unique_id=480050666]
+custom_minimum_size = Vector2(50, 10)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -133,8 +136,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_y624n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wn7el")
 text = "Options"
 
-[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1546361232]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1546361232]
+custom_minimum_size = Vector2(50, 10)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -145,10 +150,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_y624n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wn7el")
 text = "Quit"
 
-[node name="Logo" type="TextureRect" parent="VBoxContainer" unique_id=1026861693]
+[node name="Logo" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1026861693]
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

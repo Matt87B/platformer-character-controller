@@ -20,6 +20,7 @@ const LEVEL_1			:= "res://scenes/level_1.tscn"
 #States
 enum GameState {
 	GAMEPLAY,
+	RESPAWN,
 	PAUSED,
 	DIALOGUE,
 	TRANSITION,
@@ -27,8 +28,11 @@ enum GameState {
 	CUTSCENE,
 }
 
+#Globals
 var current_state: GameState = -1
+var respawn_position: Vector2 = Vector2.ZERO
 
+#Gamestate changed
 signal state_changed(new_state: GameState)
 
 #UI Requests
@@ -42,6 +46,10 @@ signal level_loaded
 
 #Camera Requests
 signal cinematic_move_requested(destination: Vector2, duration: float)
+
+#Respawn/Checkpoint signals
+signal player_respawn_requested
+signal checkpoint_reached(position: Vector2)
 
 func _ready() -> void:
 	level_loaded.connect(_on_level_loaded)
@@ -69,6 +77,14 @@ func resume_game() -> void:
 	if current_state != GameState.PAUSED:
 		return
 	set_state(GameState.GAMEPLAY)
+
+#Respawn/Checkpoint
+func request_respawn() -> void:
+	player_respawn_requested.emit()
+
+func register_checkpoint(position: Vector2) -> void:
+	respawn_position = position
+	checkpoint_reached.emit(position)
 
 #Dialogue
 func start_dialogue() -> void:
