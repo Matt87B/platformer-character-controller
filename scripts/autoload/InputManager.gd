@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var _move_input := 0.0
 

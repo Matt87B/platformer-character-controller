@@ -9,9 +9,13 @@ var mode: CameraMode = CameraMode.FOLLOW
 var target: Node2D = null
 var _tween: Tween = null
 
-@export var follow_smoothing := 5.0
+@export var follow_smoothing := 2.0
 @export var look_ahead_distance := 20.0
 @export var bounds: Rect2
+
+func jump_to_target() -> void:
+	if target != null:
+		global_position = target.global_position
 
 func _physics_process(delta: float) -> void:
 	if mode == CameraMode.FOLLOW and target:
