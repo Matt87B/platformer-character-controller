@@ -1,3 +1,5 @@
+# Charging graphic loading bar
+
 extends Control
 
 @export var progress_bar: ProgressBar
@@ -26,7 +28,6 @@ func _process(_delta: float) -> void:
 					progress_bar.value = percent
 					
 		ResourceLoader.THREAD_LOAD_LOADED:
-			# Fully loaded! Set progress to 100 and fetch the resource
 			if progress_bar:
 				progress_bar.value = 100.0
 				
@@ -35,7 +36,6 @@ func _process(_delta: float) -> void:
 			
 		ResourceLoader.THREAD_LOAD_FAILED:
 			print("Error: Failed to load target scene.")
-			# Handle error / fallback transition here
 			set_process(false)
 			
 		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:

@@ -61,7 +61,8 @@ func _ready() -> void:
 #UI
 func start_game(level_path: String) -> void:
 	_set_state(GameState.TRANSITION)
-	level_load_requested.emit(level_path)
+	SceneLoader.load_scene_path(level_path)
+	#level_load_requested.emit(level_path)
 
 func go_to_main_menu() -> void:
 	_set_state(GameState.MENU)
