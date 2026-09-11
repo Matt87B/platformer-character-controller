@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://bt2j8aqcovmg7"]
+
+[ext_resource type="Script" uid="uid://bwy4g4t5w0xit" path="res://scripts/user_interface/Video.gd" id="1_n7h2h"]
+[ext_resource type="FontFile" uid="uid://ddogs6fdy5i0b" path="res://assets/fonts/FunnelSans-Regular.ttf" id="1_yhosc"]
+
+[sub_resource type="Theme" id="Theme_2sqhd"]
+default_font = ExtResource("1_yhosc")
+default_font_size = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7h2h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sqhd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6qqc"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(0, 1.5)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5xdr"]
+bg_color = Color(0.281187, 0.281187, 0.281187, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(0, 1.5)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkmlb"]
+bg_color = Color(0.733005, 0.733005, 0.733005, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 1
+shadow_offset = Vector2(0, 1.5)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iksfx"]
+
+[node name="Video" type="Control" unique_id=608597675]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n7h2h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2084184854]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18039216, 0.18431373, 0.20784314, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=714702648]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=715778844]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer" unique_id=1997872685]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer" unique_id=96055718]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = SubResource("Theme_2sqhd")
+theme_override_constants/separation = 0
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1262995810]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 15
+text = "Video"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=931730543]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_n7h2h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=332057972]
+layout_mode = 2
+
+[node name="DisplayHBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=419212009]
+layout_mode = 2
+
+[node name="DisplayLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DisplayHBox" unique_id=1332563927]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Display"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DisplayHBox" unique_id=1455153925]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2sqhd")
+
+[node name="DisplayOptionButton" type="OptionButton" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/DisplayHBox" unique_id=1441558617]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless Windowed"
+popup/item_2/id = 2
+
+[node name="FrameHBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=150712968]
+layout_mode = 2
+
+[node name="FrameLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/FrameHBox" unique_id=124856677]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Frame Rate"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/FrameHBox" unique_id=1374884490]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2sqhd")
+
+[node name="FrameOptionButton" type="OptionButton" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/FrameHBox" unique_id=741321279]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+popup/item_0/text = "60hz"
+popup/item_0/id = 0
+popup/item_1/text = "120hz"
+popup/item_1/id = 1
+popup/item_2/text = "144hz"
+popup/item_2/id = 2
+
+[node name="VSyncHBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1129642601]
+layout_mode = 2
+
+[node name="VSyncLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VSyncHBox" unique_id=1482168530]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "VSync"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VSyncHBox" unique_id=1097039706]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2sqhd")
+
+[node name="VSyncCheckButton" type="CheckButton" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VSyncHBox" unique_id=1262710929]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1849983152]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_n7h2h")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1072369215]
+layout_mode = 2
+
+[node name="GammaHBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=949731253]
+layout_mode = 2
+
+[node name="GammaLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/GammaHBox" unique_id=1596548529]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Gamma"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/GammaHBox" unique_id=1929168769]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2sqhd")
+
+[node name="Gamma" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/GammaHBox" unique_id=28949244]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+value = 100.0
+scrollable = false
+
+[node name="SaturationHBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=199380401]
+layout_mode = 2
+
+[node name="SaturationLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/SaturationHBox" unique_id=506499286]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Saturation"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/SaturationHBox" unique_id=1612390885]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2sqhd")
+
+[node name="Saturation" type="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/SaturationHBox" unique_id=1128217325]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+value = 100.0
+scrollable = false
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1242621071]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_n7h2h")
+
+[node name="ButtonHBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=626994912]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Apply" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/ButtonHBox" unique_id=1999248662]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6qqc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r5xdr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkmlb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iksfx")
+text = "Apply"
+
+[node name="Back" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/ButtonHBox" unique_id=525121795]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6qqc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r5xdr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkmlb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iksfx")
+text = "Back"
+
+[connection signal="toggled" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/VSyncHBox/VSyncCheckButton" to="." method="_on_vsync_toggled"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/ButtonHBox/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/ButtonHBox/Back" to="." method="_on_back_pressed"]

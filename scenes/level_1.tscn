@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cljdeay1wf7e0" path="res://scenes/water_body.tscn" id="2_4nkto"]
 [ext_resource type="Texture2D" uid="uid://bvblq0agysp33" path="res://assets/textures/tile_maps/natural_tiles.png" id="3_fcfvj"]
 [ext_resource type="Texture2D" uid="uid://ba4gj7uai3200" path="res://assets/textures/tile_maps/laboratory_tiles.png" id="4_pa8r4"]
+[ext_resource type="Script" uid="uid://bf3pdgnf1vphb" path="res://scripts/core/Checkpoint.gd" id="5_4nkto"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcfvj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0y7qw"]
 texture = ExtResource("3_fcfvj")
@@ -3237,6 +3240,15 @@ metadata/_better_terrain = {
 }
 
 [node name="Level1" type="Node2D" unique_id=575627776]
+
+[node name="Checkpoint" type="Area2D" parent="." unique_id=877756738]
+position = Vector2(200, 38)
+script = ExtResource("5_4nkto")
+is_start_checkpoint = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint" unique_id=2044811132]
+shape = SubResource("RectangleShape2D_fcfvj")
 
 [node name="PlayerCharacterBody2D" parent="." unique_id=627763646 groups=["player"] instance=ExtResource("1_5xbjy")]
 position = Vector2(84, 28)

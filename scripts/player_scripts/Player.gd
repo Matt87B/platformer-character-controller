@@ -20,6 +20,10 @@ var _facing = 1.0
 @onready var movement_state_machine : StateMachine = $MovementStateMachine
 @onready var status_state_machine : StateMachine = $StatusStateMachine
 
+func _ready() -> void:
+	GameStateManager.player_respawn_requested.connect(_on_respawn)
+	global_position = GameStateManager.respawn_position
+
 func _physics_process(delta: float) -> void:
 	#This handles Coyote time
 	if is_on_floor() or is_on_wall():
@@ -50,6 +54,15 @@ func perform_move(move_input: float) -> void:
 #Wall logic
 func can_wall_slide():
 	return is_on_wall_only() and InputManager.is_move_pressed() and velocity.y > 0
+
+#Respawn logic
+func die() -> void:
+	GameStateManager.request_respawn()
+
+func _on_respawn() -> void:
+	global_position = GameStateManager.respawn_position
+	velocity = Vector2.ZERO
+	#TODO: enable input, reset any health or status effects, etc.
 
 #Getter functions
 func get_facing() -> float:
