@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dhiiqjl0rt63f"]
+
+[ext_resource type="Script" uid="uid://eivjebnimlot" path="res://scripts/user_interface/LoadingScreen.gd" id="1_m66k7"]
+
+[node name="LoadingScreen" type="Control" unique_id=1979902505]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_m66k7")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1954044312]
+layout_mode = 0
+offset_top = 53.0
+offset_right = 160.0
+offset_bottom = 80.0
+
+[node name="ProgressNumber" type="Label" parent="." unique_id=1114172479]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 27.0
+offset_right = 101.0
+offset_bottom = 50.0
